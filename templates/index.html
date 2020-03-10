@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <meta charset = "UTF-8">
+    <title>Calendar - Todo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+<div id = "bod">
+    <h1 id = "header" class = "outer">Calendar</h1>
+    <div id = "body">
+
+    <form action = "{{ url_for('add') }}" method = "POST">
+        <input type="text" name="todo" id = "input">
+        <input type = "submit" value = "Add">
+    </form>
+    </br>
+
+        {% for row in todos %}
+        <form action = "{{ url_for('delete')}}" method= "POST" class=delete-movie>
+
+            <input type=hidden value="{{ row[1] }}"name= "complete"> {{row[1]}}</input>
+            <input type=submit />
+        </br>
+        </form>
+        {% endfor %}
+        
+    </div>
+
+</div>
+</form>
+
+</body>
+
+
+</html>

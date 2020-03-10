@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<head>
+    <meta charset = "UTF-8">
+    <title>Calendar - Todo</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style1.css') }}"/>
+</head>
+<div class = "container">
+    <div class = "header">
+        <h2 id = "date">Friday, May 25</h2>
+    </div>
+    <div class = "content">
+        <ul class = "todo1">
+            {% for todo in todos %}
+
+            <li>
+
+            <form action = "{{ url_for('delete')}}" method= "POST" class=delete-movie>
+            <input type=hidden value="{{ todo[0] }}"name= "delete"> {{todo[1]}}</input>
+
+            <div class = "buttons">
+                <input type = image src = "/static/remove-icon.png" name = "delete"></input>
+                <input type = image src = "/static/incomplete.png" name = "complete"></input>
+            </div>
+            </form>
+
+            </li>
+
+            {% endfor %}
+
+        </ul>
+    </div>
+    <hr>
+    <div class = "inputHolder">
+        <form action = "{{ url_for('add') }}" method = "POST">
+            <input type = "text" name = "todo" class = "input" placeholder = "Add Actvity...">
+            <input type = "image" class = "submit" src = "/static/add-icon.png" alt = "submit"/>
+        </form>
+    </div>
+
+
+
+        
+
+
+    </div>
+</div>
